@@ -80,5 +80,9 @@ import EvmYul.Venom.VenomInstProps
 import EvmYul.Venom.Codegen.CodegenRel
 import EvmYul.Venom.Codegen.SymbolResolve
 import EvmYul.Venom.Codegen.CodegenPipeline
+import EvmYul.Venom.Codegen.CfgAnalysis
+import EvmYul.Venom.Codegen.DfgAnalysis
+import EvmYul.Venom.Codegen.LivenessAnalysis
+import EvmYul.Venom.Codegen.StackPlanGen
 import EvmYul.Venom.Codegen.GenBlockSim
 import EvmYul.Venom.Codegen.CodegenCorrectness
