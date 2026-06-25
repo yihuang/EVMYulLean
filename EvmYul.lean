@@ -87,5 +87,6 @@ import EvmYul.Venom.Codegen.LivenessAnalysis
 import EvmYul.Venom.Codegen.StackPlanGen
 import EvmYul.Venom.Codegen.StackRelSim
 import EvmYul.Venom.Codegen.SpillSim
+import EvmYul.Venom.Codegen.EncodingLemmas
 import EvmYul.Venom.Codegen.GenBlockSim
 import EvmYul.Venom.Codegen.CodegenCorrectness

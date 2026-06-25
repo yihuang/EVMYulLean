@@ -287,8 +287,8 @@ private lemma fromBytes'_UInt256_le (h : bs.length = 32) : fromBytes' bs < 2^256
     rw [h] at h'
     exact h'
 
--- | Convert a natural number into a list of bytes.
-private def toBytes' : ℕ → List UInt8
+/-- Convert a natural number into a list of bytes (little-endian). -/
+def toBytes' : ℕ → List UInt8
   | 0 => []
   | n@(.succ n') =>
     let byte : UInt8 := ⟨Nat.mod n UInt8.size, Nat.mod_lt _ (by linarith)⟩
@@ -330,8 +330,9 @@ lemma zeroPadBytes_len (h : bs.length ≤ n) : (zeroPadBytes n bs).length = n :=
   aesop
 
 -- | Appending a bunch of zeroes to a little-endian list of bytes doesn't change its value.
+/-- Appending a bunch of zeroes to a little-endian list of bytes doesn't change its value. -/
 @[simp]
-private lemma extend_bytes_zero : fromBytes' (bs ++ List.replicate n 0) = fromBytes' bs := by
+lemma extend_bytes_zero : fromBytes' (bs ++ List.replicate n 0) = fromBytes' bs := by
   induction bs with
   | nil =>
     simp [fromBytes']
@@ -345,8 +346,9 @@ private lemma extend_bytes_zero : fromBytes' (bs ++ List.replicate n 0) = fromBy
 private lemma fromBytes'_zeroPadBytes_32_eq : fromBytes' (zeroPadBytes 32 bs) = fromBytes' bs := extend_bytes_zero
 
 -- | Casting a natural number to a list of bytes and back is the identity.
+/-- Casting a natural number to a list of bytes and back is the identity. -/
 @[simp]
-private lemma fromBytes'_toBytes' {x : ℕ} : fromBytes' (toBytes' x) = x := by
+lemma fromBytes'_toBytes' {x : ℕ} : fromBytes' (toBytes' x) = x := by
   match x with
   | .zero => simp [toBytes', fromBytes']
   | .succ n =>
